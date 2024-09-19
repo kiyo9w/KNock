@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
-import { View, ScrollView } from 'react-native';
+import React, { useContext } from 'react';
+import { View, ScrollView, Button } from 'react-native';
 import Header from '@/components/Header';
 import SearchBar from '@/components/SearchBar';
 import SleepingTimeCard from '@/components/SleepingTimeCard';
 import DailyPlan from '@/components/DailyPlan';
 import { globalStyles } from '@/styles/globalStyles';
-
-type DailyPlanProps = {
-  onClose: () => void;
-};
+import { DailyPlanContext } from '@/context/DailyPlanContext';
 
 const Page = () => {
-  const [showDailyPlan, setShowDailyPlan] = useState(false);
-
-  // Function to toggle the visibility
-  const toggleDailyPlan = () => {
-    setShowDailyPlan(!showDailyPlan);
-  };
+  const { showDailyPlan, toggleDailyPlan } = useContext(DailyPlanContext);
 
   return (
     <View style={{ flex: 1 }}>
@@ -24,6 +16,7 @@ const Page = () => {
         <Header />
         <SearchBar />
         <SleepingTimeCard />
+        <Button title="Schedule" onPress={toggleDailyPlan} />
       </ScrollView>
       {showDailyPlan && <DailyPlan />}
     </View>
