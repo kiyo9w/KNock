@@ -1,12 +1,33 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
+import { View, ScrollView } from 'react-native';
+import Header from '@/components/Header';
+import SearchBar from '@/components/SearchBar';
+import SleepingTimeCard from '@/components/SleepingTimeCard';
+import DailyPlan from '@/components/DailyPlan';
+import { globalStyles } from '@/styles/globalStyles';
+
+type DailyPlanProps = {
+  onClose: () => void;
+};
 
 const Page = () => {
-  return (
-    <View>
-      <Text>Page</Text>
-    </View>
-  )
-}
+  const [showDailyPlan, setShowDailyPlan] = useState(false);
 
-export default Page
+  // Function to toggle the visibility
+  const toggleDailyPlan = () => {
+    setShowDailyPlan(!showDailyPlan);
+  };
+
+  return (
+    <View style={{ flex: 1 }}>
+      <ScrollView style={globalStyles.container}>
+        <Header />
+        <SearchBar />
+        <SleepingTimeCard />
+      </ScrollView>
+      {showDailyPlan && <DailyPlan />}
+    </View>
+  );
+};
+
+export default Page;

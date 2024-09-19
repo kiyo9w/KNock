@@ -1,13 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import DailyPlan from '@/components/DailyPlan';
 
-const Post = () => {
+const login = () => {
   return (
     <View>
-      <DailyPlan />
+      <Text>login</Text>
     </View>
   )
 }
 
-export default Post
+export default login
