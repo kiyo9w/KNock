@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import DailyPlan from '@/components/DailyPlan';
+import PlanDropDown from '@/components/PlanDropDown';
 
 const Post = () => {
   return (
     <View>
-      <DailyPlan />
+      <PlanDropDown />
     </View>
   )
 }

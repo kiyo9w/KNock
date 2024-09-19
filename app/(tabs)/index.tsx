@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { View, ScrollView, Button } from 'react-native';
 import Header from '@/components/Header';
 import SearchBar from '@/components/SearchBar';
-import SleepingTimeCard from '@/components/SleepingTimeCard';
-import DailyPlan from '@/components/DailyPlan';
+import PlanDropDown from '@/components/PlanDropDown';
 import { globalStyles } from '@/styles/globalStyles';
 import { DailyPlanContext } from '@/context/DailyPlanContext';
 
@@ -15,10 +14,9 @@ const Page = () => {
       <ScrollView style={globalStyles.container}>
         <Header />
         <SearchBar />
-        <SleepingTimeCard />
         <Button title="Schedule" onPress={toggleDailyPlan} />
       </ScrollView>
-      {showDailyPlan && <DailyPlan />}
+      {showDailyPlan && <PlanDropDown />}
     </View>
   );
 };
