@@ -23,8 +23,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    ...FontAwesome.font,
+    'sans': require('../assets/fonts/PublicaSansRound-Rg.ttf'),
+    'sans-b': require('../assets/fonts/PublicaSansRound-Bd.ttf'),
+    'sans-m': require('../assets/fonts/PublicaSansRound-Md.ttf'),
+    'sans-ul': require('../assets/fonts/PublicaSansRound-UlLt.ttf'),
+    'sans-xl': require('../assets/fonts/PublicaSansRound-XLt.ttf'),
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -46,13 +49,12 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme() ?? 'light'; 
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>
   );
