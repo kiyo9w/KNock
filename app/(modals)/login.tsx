@@ -1,12 +1,14 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import Login from '@/components/Login'
+import { Stack } from 'expo-router'
 
-const login = () => {
+const LoginModal = () => {
   return (
-    <View>
-      <Text>login</Text>
-    </View>
+    <>
+      <Stack.Screen options={{ title: 'Login' }} />
+      <Login />
+    </>
   )
 }
 
-export default login
+export default LoginModal

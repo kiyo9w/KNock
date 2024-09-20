@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { supabase } from '../lib/supabase';
-import { StackNavigationProp } from '@react-navigation/stack';
-
-type RootStackParamList = {
-  Main: undefined;
-  Register: undefined;
-};
-
-type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Register'>;
-
+import { useRouter } from 'expo-router';
 type Props = {
-  navigation: LoginScreenNavigationProp;
+  navigation?: any; // You can replace this with a more specific type if needed
 };
 
 function Login({ navigation }: Props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const router = useRouter();
 
   const handleLogin = async () => {
     try {
@@ -24,7 +17,7 @@ function Login({ navigation }: Props) {
       if (error) throw error;
       if (data.user) {
         console.log('User logged in successfully');
-        navigation.navigate('Main');
+        navigation?.navigate('Main');
       }
     } catch (error: any) {
       console.error('Error logging in:', error.message);
@@ -57,7 +50,7 @@ function Login({ navigation }: Props) {
         <Text style={styles.buttonText}>Sign In</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+      <TouchableOpacity onPress={() => navigation?.navigate('Register')}>
         <Text style={styles.registerText}>
           Don't have an account? Sign up for free
         </Text>
