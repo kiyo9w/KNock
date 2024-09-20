@@ -1,6 +1,7 @@
 import React, { useContext, useState, useRef } from 'react';
 import { View, Text, ImageBackground, ScrollView, TouchableOpacity, TextInput, Animated, Dimensions } from 'react-native';
-import { Plan } from '../../types/PlanTypes';
+import { Plan } from '@/types/PlanTypes';
+import { Comment } from '@/types/CommentTypes';
 import { Ionicons } from '@expo/vector-icons';
 import { DailyPlanContext } from '@/context/DailyPlanContext';
 import PlanDropDown from '@/components/PlanDropDown';
@@ -9,13 +10,6 @@ import { CommentSectionStyles } from '@/styles/components/CommentSectionStyles';
 
 interface FullScreenPlanProps {
   plan: Plan;
-}
-
-interface Comment {
-  id: string;
-  text: string;
-  author: string;
-  createdAt: Date;
 }
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
